@@ -10,15 +10,36 @@ import Foundation
 import AVFoundation
 import UIKit
 
-
 class StreamPlayer {
     
     let engine = AVAudioEngine()
+    
+    
+    var alarmAudioPlayer: AVAudioPlayer?
+    
+    func playSound(named nameOfAudioFileInAssetCatalog: String) -> AVAudioPlayer? {
+
+        if let sound = NSDataAsset(name: nameOfAudioFileInAssetCatalog) {
+            
+            do {
+                try! AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+                try! AVAudioSession.sharedInstance().setActive(true)
+                try alarmAudioPlayer = AVAudioPlayer(data: sound.data)
+                
+                return alarmAudioPlayer!
+            } catch {
+                print("error initializing AVAudioPlayer")
+                }
+            }
+        
+        return nil
+    }
     
     func test() {
         // first sound
         
         let player = AVAudioPlayerNode()
+        let avPlayer = AVAudioPlayer()
         //let url = Bundle.main().urlForResource(
         //    "music/JasperJohns", withExtension: "m4a")!
         //
@@ -32,14 +53,15 @@ class StreamPlayer {
         // this works
         //if let assetUrl = Bundle.main().urlForResource("song", withExtension: "mp3") {
         
+    
         
-        if let asset = NSDataAsset(name:"Sound") {
+        if let asset = NSDataAsset(name:"Foreground") {
             
             do {
                 // Use NSDataAsset's data property to access the audio file stored in Sound
-                try player = AVAudioPlayer(data:asset.data, fileTypeHint:"caf")
+                let avPlayer = try AVAudioPlayer(data:asset.data, fileTypeHint:"public.mp3")
                 // Play the above sound file
-                player.play()
+                avPlayer.play()
             } catch let error as NSError {
                 print(error.localizedDescription)
             }
@@ -47,9 +69,6 @@ class StreamPlayer {
         
         if let assetUrl = Bundle.main().urlForResource("01 Jasper John.mp3", withExtension: nil) {
             
-            
-        
-
             print("found it")
 
             let f = try! AVAudioFile(forReading: assetUrl)
