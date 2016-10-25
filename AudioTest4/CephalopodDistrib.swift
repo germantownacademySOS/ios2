@@ -238,11 +238,6 @@ open class Cephalopod: NSObject {
         
         if self.fromVolume == self.toVolume {
             callOnFinished(finished: true)
-            // stop player if volume has been ducked completely -SEF
-            if self.toVolume == 0 {
-                print("player.stop() called")
-                player.stop()
-            }
             return
         }
         
@@ -260,7 +255,11 @@ open class Cephalopod: NSObject {
     }
     
     private func callOnFinished(finished: Bool) {
-        print("callOnFinished()") // I AM HERE WHY SO MANY CALLS TO THIS?
+        // stop player if volume has been ducked completely -SEF
+        if player.volume == 0 {
+            // print("callOnFinished() - PAUSE")
+            player.pause()
+        }
         let saveOnFinished: ((Bool)->())? = onFinished
         onFinished = nil // Make sure it is called only once
         saveOnFinished?(finished)
