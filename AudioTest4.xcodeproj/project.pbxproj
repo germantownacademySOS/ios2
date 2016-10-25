@@ -16,6 +16,7 @@
 		9B4EBDC11DB845CA006D4089 /* StreamPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4EBDC01DB845CA006D4089 /* StreamPlayer.swift */; };
 		9B4EBDC31DB863CD006D4089 /* song.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9B4EBDC21DB863CD006D4089 /* song.mp3 */; };
 		9B4EBDC61DB86856006D4089 /* rr9.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9B4EBDC51DB86856006D4089 /* rr9.mp3 */; };
+		9B65232D1DBF01D5009602F3 /* CephalopodDistrib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B65232C1DBF01D5009602F3 /* CephalopodDistrib.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +44,7 @@
 		9B4EBDC21DB863CD006D4089 /* song.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = song.mp3; sourceTree = "<group>"; };
 		9B4EBDC41DB86605006D4089 /* song2.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = song2.m4a; sourceTree = "<group>"; };
 		9B4EBDC51DB86856006D4089 /* rr9.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = rr9.mp3; sourceTree = "<group>"; };
+		9B65232C1DBF01D5009602F3 /* CephalopodDistrib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CephalopodDistrib.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +96,7 @@
 				9B4EBDA91DB81A90006D4089 /* LaunchScreen.storyboard */,
 				9B4EBDAC1DB81A90006D4089 /* Info.plist */,
 				9B4EBDC01DB845CA006D4089 /* StreamPlayer.swift */,
+				9B65232C1DBF01D5009602F3 /* CephalopodDistrib.swift */,
 			);
 			path = AudioTest4;
 			sourceTree = "<group>";
@@ -214,6 +217,7 @@
 			files = (
 				9B4EBDA31DB81A90006D4089 /* ViewController.swift in Sources */,
 				9B4EBDC11DB845CA006D4089 /* StreamPlayer.swift in Sources */,
+				9B65232D1DBF01D5009602F3 /* CephalopodDistrib.swift in Sources */,
 				9B4EBDA11DB81A90006D4089 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -414,6 +418,7 @@
 				9B4EBDBC1DB81A90006D4089 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9B4EBDBD1DB81A90006D4089 /* Build configuration list for PBXNativeTarget "AudioTest4Tests" */ = {
 			isa = XCConfigurationList;
@@ -422,6 +427,7 @@
 				9B4EBDBF1DB81A90006D4089 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

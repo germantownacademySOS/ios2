@@ -12,6 +12,8 @@ import UIKit
 
 class StreamPlayer {
     
+    var cephalopod: Cephalopod?
+    
     var mapPlayers = [String: AVAudioPlayer]()
     
     func toggleSound(named nameOfAudioFileInAssetCatalog: String) {
@@ -26,15 +28,21 @@ class StreamPlayer {
                 if let oldPlayer = mapPlayers[nameOfAudioFileInAssetCatalog] {
                     
                     if oldPlayer.isPlaying {
-                        oldPlayer.pause()
+                        cephalopod = Cephalopod(player: oldPlayer)
+                        cephalopod?.fadeOut(duration: 1, velocity: 2)
+                        // oldPlayer.pause()
                     }
                     else {
+                        cephalopod = Cephalopod(player: oldPlayer)
+                        cephalopod?.fadeIn(duration: 1, velocity: 2)
                         oldPlayer.play()
                     }
                 }
                 else {
                     let newPlayer = try AVAudioPlayer(data: sound.data)
                     mapPlayers[nameOfAudioFileInAssetCatalog] = newPlayer
+                    cephalopod = Cephalopod(player: newPlayer)
+                    cephalopod?.fadeIn(duration: 1, velocity: 2)
                     newPlayer.play()
                 }
                 
