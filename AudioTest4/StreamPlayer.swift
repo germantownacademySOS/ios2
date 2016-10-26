@@ -28,14 +28,17 @@ class StreamPlayer {
                 
                 if let oldPlayer = mapPlayers[nameOfAudioFileInAssetCatalog] {
                     
-                    let cephalopod = mapCephalopods[nameOfAudioFileInAssetCatalog]
+                    let oldCephalopod = mapCephalopods[nameOfAudioFileInAssetCatalog]
+                    oldCephalopod?.stop()
+                    
+                    // @todo add flag to indicate if ramping up or down
                     
                     if oldPlayer.isPlaying {
-                        cephalopod?.fadeOut(duration: 1, velocity: 2)
+                        oldCephalopod?.fadeOut(duration: 1, velocity: 2)
                         // oldPlayer.pause()
                     }
                     else {
-                        cephalopod?.fadeIn(duration: 1, velocity: 2)
+                        oldCephalopod?.fadeIn(duration: 1, velocity: 2)
                         oldPlayer.play()
                     }
                 }
