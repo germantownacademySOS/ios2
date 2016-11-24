@@ -17,6 +17,7 @@
 		9B4EBDC31DB863CD006D4089 /* song.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9B4EBDC21DB863CD006D4089 /* song.mp3 */; };
 		9B4EBDC61DB86856006D4089 /* rr9.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 9B4EBDC51DB86856006D4089 /* rr9.mp3 */; };
 		9B65232D1DBF01D5009602F3 /* CephalopodDistrib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B65232C1DBF01D5009602F3 /* CephalopodDistrib.swift */; };
+		9BAEA9441DE7450700A64439 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 9BAEA9431DE7450700A64439 /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +46,7 @@
 		9B4EBDC41DB86605006D4089 /* song2.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = song2.m4a; sourceTree = "<group>"; };
 		9B4EBDC51DB86856006D4089 /* rr9.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = rr9.mp3; sourceTree = "<group>"; };
 		9B65232C1DBF01D5009602F3 /* CephalopodDistrib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CephalopodDistrib.swift; sourceTree = "<group>"; };
+		9BAEA9431DE7450700A64439 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +89,7 @@
 			isa = PBXGroup;
 			children = (
 				9B4EBDA01DB81A90006D4089 /* AppDelegate.swift */,
+				9BAEA9431DE7450700A64439 /* README.md */,
 				9B4EBDA21DB81A90006D4089 /* ViewController.swift */,
 				9B4EBDA41DB81A90006D4089 /* Main.storyboard */,
 				9B4EBDA71DB81A90006D4089 /* Assets.xcassets */,
@@ -217,6 +220,7 @@
 			files = (
 				9B4EBDA31DB81A90006D4089 /* ViewController.swift in Sources */,
 				9B4EBDC11DB845CA006D4089 /* StreamPlayer.swift in Sources */,
+				9BAEA9441DE7450700A64439 /* README.md in Sources */,
 				9B65232D1DBF01D5009602F3 /* CephalopodDistrib.swift in Sources */,
 				9B4EBDA11DB81A90006D4089 /* AppDelegate.swift in Sources */,
 			);
