@@ -58,17 +58,7 @@ class StreamPlayer {
             }
     }
     
-    
-    
-    func test1() {
-        toggleSound(named: "m21-Test1")
-    }
-    
-    func test2() {
-        toggleSound(named: "m21-Test2")
-    }
-    
-    func test3() {
-        toggleSound(named: "m21-Test3")
+    func playSound( _ named : String ) {
+        toggleSound(named: named)
     }
 }

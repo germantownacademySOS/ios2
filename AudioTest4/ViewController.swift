@@ -24,17 +24,8 @@ class ViewController: UIViewController {
 
 
     @IBAction func didTouchSound1Button(_ sender: UIButton) {
-        streamer.test1()
+        streamer.playSound( sender.currentTitle!)
     }
     
-    @IBAction func didTouchSound2Button(_ sender: UIButton) {
-        
-        streamer.test2()
-    }
-    
-    @IBAction func didTouchSound3Button(_ sender: UIButton) {
-        
-        streamer.test3()
-    }
 }
 
