@@ -15,6 +15,7 @@
 		9B4EBDB61DB81A90006D4089 /* AudioTest4Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4EBDB51DB81A90006D4089 /* AudioTest4Tests.swift */; };
 		9B4EBDC11DB845CA006D4089 /* StreamPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4EBDC01DB845CA006D4089 /* StreamPlayer.swift */; };
 		9B65232D1DBF01D5009602F3 /* CephalopodDistrib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B65232C1DBF01D5009602F3 /* CephalopodDistrib.swift */; };
+		D229B4711E08CDF0000CBA99 /* BeaconInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D229B4701E08CDF0000CBA99 /* BeaconInfo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,7 @@
 		9B4EBDB71DB81A90006D4089 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9B4EBDC01DB845CA006D4089 /* StreamPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StreamPlayer.swift; sourceTree = "<group>"; };
 		9B65232C1DBF01D5009602F3 /* CephalopodDistrib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CephalopodDistrib.swift; sourceTree = "<group>"; };
+		D229B4701E08CDF0000CBA99 /* BeaconInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeaconInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +91,7 @@
 				9B4EBDAC1DB81A90006D4089 /* Info.plist */,
 				9B4EBDC01DB845CA006D4089 /* StreamPlayer.swift */,
 				9B65232C1DBF01D5009602F3 /* CephalopodDistrib.swift */,
+				D229B4701E08CDF0000CBA99 /* BeaconInfo.swift */,
 			);
 			path = AudioTest4;
 			sourceTree = "<group>";
@@ -209,6 +212,7 @@
 				9B4EBDC11DB845CA006D4089 /* StreamPlayer.swift in Sources */,
 				9B65232D1DBF01D5009602F3 /* CephalopodDistrib.swift in Sources */,
 				9B4EBDA11DB81A90006D4089 /* AppDelegate.swift in Sources */,
+				D229B4711E08CDF0000CBA99 /* BeaconInfo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
