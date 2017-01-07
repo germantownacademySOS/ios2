@@ -482,6 +482,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 14E4AD6CE966C848D07427F8 /* Pods-AudioTest4.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = AudioTest4/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -495,6 +496,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5EDB40CF5A0DBC760ADEA4FF /* Pods-AudioTest4.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = AudioTest4/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
