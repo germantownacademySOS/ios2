@@ -8,7 +8,6 @@
 
 import UIKit
 import CoreLocation
-import SnapKit
 
 class ViewController: UIViewController {
     

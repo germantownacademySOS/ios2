@@ -7,7 +7,6 @@ target 'AudioTest4' do
 
   # Pods for AudioTest4
 
-  pod 'SnapKit', '~> 3.1.2'
   pod 'Alamofire', '~> 4.2.0'
   pod 'SwiftyJSON'
 
