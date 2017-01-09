@@ -118,7 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				9B4EBDA01DB81A90006D4089 /* AppDelegate.swift */,
-				9B4EBDA21DB81A90006D4089 /* ViewController.swift */,
+				C248B0EC1E24521400A7515A /* Views */,
 				9B4EBDA41DB81A90006D4089 /* Main.storyboard */,
 				9B4EBDA71DB81A90006D4089 /* Assets.xcassets */,
 				9B4EBDA91DB81A90006D4089 /* LaunchScreen.storyboard */,
@@ -126,7 +126,6 @@
 				9B4EBDC01DB845CA006D4089 /* StreamPlayer.swift */,
 				9B65232C1DBF01D5009602F3 /* CephalopodDistrib.swift */,
 				D229B4701E08CDF0000CBA99 /* BeaconInfo.swift */,
-				C219AC5C1E242EB100A24E42 /* AlamofireViewController.swift */,
 			);
 			path = AudioTest4;
 			sourceTree = "<group>";
@@ -138,6 +137,15 @@
 				9B4EBDB71DB81A90006D4089 /* Info.plist */,
 			);
 			path = AudioTest4Tests;
+			sourceTree = "<group>";
+		};
+		C248B0EC1E24521400A7515A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				9B4EBDA21DB81A90006D4089 /* ViewController.swift */,
+				C219AC5C1E242EB100A24E42 /* AlamofireViewController.swift */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -486,7 +494,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 14E4AD6CE966C848D07427F8 /* Pods-AudioTest4.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = AudioTest4/Info.plist;
@@ -501,7 +508,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5EDB40CF5A0DBC760ADEA4FF /* Pods-AudioTest4.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = AudioTest4/Info.plist;
