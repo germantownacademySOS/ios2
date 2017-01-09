@@ -17,6 +17,7 @@
 		9B4EBDB61DB81A90006D4089 /* AudioTest4Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4EBDB51DB81A90006D4089 /* AudioTest4Tests.swift */; };
 		9B4EBDC11DB845CA006D4089 /* StreamPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4EBDC01DB845CA006D4089 /* StreamPlayer.swift */; };
 		9B65232D1DBF01D5009602F3 /* CephalopodDistrib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B65232C1DBF01D5009602F3 /* CephalopodDistrib.swift */; };
+		C219AC5D1E242EB100A24E42 /* AlamofireViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C219AC5C1E242EB100A24E42 /* AlamofireViewController.swift */; };
 		D229B4711E08CDF0000CBA99 /* BeaconInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D229B4701E08CDF0000CBA99 /* BeaconInfo.swift */; };
 /* End PBXBuildFile section */
 
@@ -48,6 +49,7 @@
 		9B4EBDB71DB81A90006D4089 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9B4EBDC01DB845CA006D4089 /* StreamPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StreamPlayer.swift; sourceTree = "<group>"; };
 		9B65232C1DBF01D5009602F3 /* CephalopodDistrib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CephalopodDistrib.swift; sourceTree = "<group>"; };
+		C219AC5C1E242EB100A24E42 /* AlamofireViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AlamofireViewController.swift; path = Views/AlamofireViewController.swift; sourceTree = "<group>"; };
 		D229B4701E08CDF0000CBA99 /* BeaconInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeaconInfo.swift; sourceTree = "<group>"; };
 		E4EE2AA42EDBF56E0CFFE422 /* Pods-AudioTest4Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AudioTest4Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AudioTest4Tests/Pods-AudioTest4Tests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -124,6 +126,7 @@
 				9B4EBDC01DB845CA006D4089 /* StreamPlayer.swift */,
 				9B65232C1DBF01D5009602F3 /* CephalopodDistrib.swift */,
 				D229B4701E08CDF0000CBA99 /* BeaconInfo.swift */,
+				C219AC5C1E242EB100A24E42 /* AlamofireViewController.swift */,
 			);
 			path = AudioTest4;
 			sourceTree = "<group>";
@@ -193,8 +196,7 @@
 				TargetAttributes = {
 					9B4EBD9C1DB81A90006D4089 = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = 8SNK6JGPHG;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 					9B4EBDB01DB81A90006D4089 = {
 						CreatedOnToolsVersion = 8.0;
@@ -341,6 +343,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9B4EBDA31DB81A90006D4089 /* ViewController.swift in Sources */,
+				C219AC5D1E242EB100A24E42 /* AlamofireViewController.swift in Sources */,
 				9B4EBDC11DB845CA006D4089 /* StreamPlayer.swift in Sources */,
 				9B65232D1DBF01D5009602F3 /* CephalopodDistrib.swift in Sources */,
 				9B4EBDA11DB81A90006D4089 /* AppDelegate.swift in Sources */,
@@ -485,7 +488,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 8SNK6JGPHG;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = AudioTest4/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.frasers.AudioTest4;
@@ -500,7 +503,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 8SNK6JGPHG;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = AudioTest4/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.frasers.AudioTest4;

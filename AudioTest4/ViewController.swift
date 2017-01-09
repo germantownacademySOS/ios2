@@ -11,8 +11,9 @@ import CoreLocation
 import SnapKit
 
 class ViewController: UIViewController {
-
-    @IBOutlet weak var openOtherPOCViewButton: UIButton!
+    
+    
+    
     
     let streamer = StreamPlayer()
     
@@ -21,9 +22,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
-        
-        loadSnapKit()
         
         locationManager.requestWhenInUseAuthorization()
         locationManager.delegate = self
@@ -54,12 +52,6 @@ class ViewController: UIViewController {
         self.performSegue(withIdentifier: "openOtherPOCView", sender: self)
     }
     
-    func loadSnapKit() {
-        openOtherPOCViewButton.snp.makeConstraints { make in
-            make.bottom.equalToSuperview()
-            make.centerX.equalToSuperview()
-        }
-    }
     
 }
 
