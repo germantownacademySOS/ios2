@@ -276,8 +276,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Example" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pxE-ey-LTw">
-                                <rect key="frame" x="22" y="83" width="330" height="20.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pxE-ey-LTw">
+                                <rect key="frame" x="16" y="72" width="343" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -285,9 +285,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="pxE-ey-LTw" firstAttribute="top" secondItem="ROv-4K-Vgx" secondAttribute="bottom" constant="19" id="0tZ-3p-Uyv"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="pxE-ey-LTw" secondAttribute="trailing" constant="7" id="WpE-Ax-CwZ"/>
-                            <constraint firstItem="pxE-ey-LTw" firstAttribute="leading" secondItem="6WJ-tH-ULh" secondAttribute="leadingMargin" constant="6" id="sls-RI-kHy"/>
+                            <constraint firstItem="pxE-ey-LTw" firstAttribute="top" secondItem="ROv-4K-Vgx" secondAttribute="bottom" constant="8" symbolic="YES" id="3LV-e9-RbT"/>
+                            <constraint firstItem="pxE-ey-LTw" firstAttribute="trailing" secondItem="6WJ-tH-ULh" secondAttribute="trailingMargin" id="KnM-c9-0p5"/>
+                            <constraint firstItem="pxE-ey-LTw" firstAttribute="leading" secondItem="6WJ-tH-ULh" secondAttribute="leadingMargin" id="RN3-oe-EOr"/>
                         </constraints>
                     </view>
                     <connections>
