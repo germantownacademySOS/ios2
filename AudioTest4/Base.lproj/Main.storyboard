@@ -22,8 +22,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="jyQ-In-un2">
-                                <rect key="frame" x="16" y="288" width="73" height="90"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="jyQ-In-un2">
+                                <rect key="frame" x="16" y="268.5" width="73" height="130"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e3a-fy-wPu">
                                         <rect key="frame" x="0.0" y="0.0" width="71" height="30"/>
@@ -33,14 +33,14 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zZi-J1-WoJ">
-                                        <rect key="frame" x="0.0" y="30" width="73" height="30"/>
+                                        <rect key="frame" x="0.0" y="50" width="73" height="30"/>
                                         <state key="normal" title="m21-Test2"/>
                                         <connections>
                                             <action selector="didTouchSound1Button:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6Rj-s6-ePh"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yqs-9C-9GU">
-                                        <rect key="frame" x="0.0" y="60" width="73" height="30"/>
+                                        <rect key="frame" x="0.0" y="100" width="73" height="30"/>
                                         <state key="normal" title="m21-Test3"/>
                                         <connections>
                                             <action selector="didTouchSound1Button:" destination="BYZ-38-t0r" eventType="touchUpInside" id="IkB-V0-A9s"/>
@@ -48,8 +48,8 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="OeS-p6-xwQ">
-                                <rect key="frame" x="244" y="288" width="115" height="90"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="OeS-p6-xwQ">
+                                <rect key="frame" x="244" y="268.5" width="115" height="130"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zml-gO-3Be">
                                         <rect key="frame" x="0.0" y="0.0" width="115" height="30"/>
@@ -59,14 +59,14 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0fv-lp-mwA">
-                                        <rect key="frame" x="20" y="30" width="95" height="30"/>
+                                        <rect key="frame" x="20" y="50" width="95" height="30"/>
                                         <state key="normal" title="encirclingflow"/>
                                         <connections>
                                             <action selector="didTouchSound1Button:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aAO-7z-e66"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DeA-Z9-Wxa">
-                                        <rect key="frame" x="37" y="60" width="78" height="30"/>
+                                        <rect key="frame" x="37" y="100" width="78" height="30"/>
                                         <state key="normal" title="stingcycles"/>
                                         <connections>
                                             <action selector="didTouchSound1Button:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yTE-LY-503"/>
@@ -75,7 +75,7 @@
                                 </subviews>
                             </stackView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="GALogo" translatesAutoresizingMaskIntoConstraints="NO" id="bXt-r2-ZNM">
-                                <rect key="frame" x="121" y="28" width="132" height="132"/>
+                                <rect key="frame" x="121.5" y="28" width="132" height="132"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="132" id="wZT-4w-kVW"/>
                                     <constraint firstAttribute="width" constant="132" id="zFV-Aq-efH"/>
