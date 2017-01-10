@@ -9,6 +9,7 @@
 import Foundation
 import AVFoundation
 import UIKit
+import Cephalopod
 
 class StreamPlayer {
     
@@ -18,7 +19,7 @@ class StreamPlayer {
     var mapCephalopods = [String: Cephalopod]()
     
     func toggleSound(named nameOfAudioFileInAssetCatalog: String) {
-
+        
         if let sound = NSDataAsset(name: nameOfAudioFileInAssetCatalog) {
             
             do {
@@ -54,8 +55,8 @@ class StreamPlayer {
                 
             } catch {
                 print("error initializing AVAudioPlayer")
-                }
             }
+        }
     }
     
     func playSound( _ named : String ) {

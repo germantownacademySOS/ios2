@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Cephalopod.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-AudioTest4.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -27,7 +32,7 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>2B7214DA87E6AD094843D198B66CE478</key>
+		<key>7A39673363339E5E7AC8CC05F8A9F135</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -37,12 +42,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>975C69045ED0F5D26F0D3FA56E3EBA85</key>
+		<key>9B7CF4334E9E9BD5398BEC0CEDD4B9FE</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>BB014D06D4673DC7FF1F8C059FE1908C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CC0359CB59D94EF7384A15C83A8AE915</key>
 		<dict>
 			<key>primary</key>
 			<true/>

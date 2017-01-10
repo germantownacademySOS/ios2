@@ -9,7 +9,8 @@ target 'AudioTest4' do
 
   pod 'Alamofire', '~> 4.2.0'
   pod 'SwiftyJSON'
-
+  pod 'Cephalopod', '~> 1.0.1'
+  
   target 'AudioTest4Tests' do
     inherit! :search_paths
     # Pods for testing
