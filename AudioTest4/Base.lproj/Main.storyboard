@@ -160,6 +160,26 @@
                                             <segue destination="jUI-e0-voB" kind="show" id="tM4-VT-hpM"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="Dah-5G-LqA" style="IBUITableViewCellStyleDefault" id="fv9-G8-5wZ">
+                                        <rect key="frame" x="0.0" y="88" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fv9-G8-5wZ" id="1cg-A4-2VP">
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="About" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Dah-5G-LqA">
+                                                    <rect key="frame" x="15" y="0.0" width="325" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="KKd-MN-6bw" kind="show" id="jS1-bH-zzZ"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -217,7 +237,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T1M-vO-lro" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2780" y="510"/>
+            <point key="canvasLocation" x="2780" y="22"/>
         </scene>
         <!--Bluetooth-->
         <scene sceneID="23V-Li-7mJ">
@@ -262,7 +282,39 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pt5-eD-GIX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2780" y="1196"/>
+            <point key="canvasLocation" x="2780" y="802"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="GJd-Bt-Mew">
+            <objects>
+                <viewController id="KKd-MN-6bw" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="qhj-JG-9HC"/>
+                        <viewControllerLayoutGuide type="bottom" id="Ktm-cA-3Xx"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="qLe-K1-ctt">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CREDITS Gabrielle Russomagno Charles Masters  Perry Fraser Scott Fraser " textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RCl-11-SBh" userLabel="CREDITS Gabrielle Russomagno Charles Masters  Perry Fraser Scott Fraser">
+                                <rect key="frame" x="0.0" y="72" width="375" height="546"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="RCl-11-SBh" firstAttribute="top" secondItem="qhj-JG-9HC" secondAttribute="bottom" constant="8" symbolic="YES" id="4P7-XW-aSs"/>
+                            <constraint firstItem="RCl-11-SBh" firstAttribute="bottom" secondItem="Ktm-cA-3Xx" secondAttribute="top" id="Uqm-eS-BGp"/>
+                            <constraint firstItem="RCl-11-SBh" firstAttribute="leading" secondItem="qLe-K1-ctt" secondAttribute="leading" id="b69-MV-oeT"/>
+                            <constraint firstAttribute="trailing" secondItem="RCl-11-SBh" secondAttribute="trailing" id="kmH-6Y-AF0"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lGO-nd-NNB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2780" y="1543.1784107946028"/>
         </scene>
         <!--SimpleBLE Controller-->
         <scene sceneID="36x-dN-SB9">
@@ -296,7 +348,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FUT-a4-Bc8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3568.8000000000002" y="1195.0524737631185"/>
+            <point key="canvasLocation" x="3569" y="800"/>
         </scene>
         <!--Alamofire View Controller-->
         <scene sceneID="yQz-LS-bgB">
@@ -331,7 +383,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JeA-lj-wDn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3569" y="512"/>
+            <point key="canvasLocation" x="3569" y="21"/>
         </scene>
         <!--Other Things-->
         <scene sceneID="d5V-9q-EUh">
