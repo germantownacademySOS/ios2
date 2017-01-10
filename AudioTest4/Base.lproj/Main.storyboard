@@ -277,7 +277,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Example" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pxE-ey-LTw">
-                                <rect key="frame" x="155" y="323" width="65" height="21"/>
+                                <rect key="frame" x="22" y="83" width="330" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -285,14 +285,18 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="pxE-ey-LTw" firstAttribute="centerX" secondItem="6WJ-tH-ULh" secondAttribute="centerX" id="AHs-6K-VXV"/>
-                            <constraint firstItem="pxE-ey-LTw" firstAttribute="centerY" secondItem="6WJ-tH-ULh" secondAttribute="centerY" id="mJ8-dO-rAJ"/>
+                            <constraint firstItem="pxE-ey-LTw" firstAttribute="top" secondItem="ROv-4K-Vgx" secondAttribute="bottom" constant="19" id="0tZ-3p-Uyv"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="pxE-ey-LTw" secondAttribute="trailing" constant="7" id="WpE-Ax-CwZ"/>
+                            <constraint firstItem="pxE-ey-LTw" firstAttribute="leading" secondItem="6WJ-tH-ULh" secondAttribute="leadingMargin" constant="6" id="sls-RI-kHy"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="bleInfoLabelOut" destination="pxE-ey-LTw" id="moX-l5-hxL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FUT-a4-Bc8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3569" y="1196"/>
+            <point key="canvasLocation" x="3568.8000000000002" y="1195.0524737631185"/>
         </scene>
         <!--Alamofire View Controller-->
         <scene sceneID="yQz-LS-bgB">
