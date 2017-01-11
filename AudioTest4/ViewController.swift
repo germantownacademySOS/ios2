@@ -29,10 +29,6 @@ class ViewController: UIViewController {
         streamer.playSound( sender.currentTitle!)
     }
     
-    @IBAction func openOtherPOCView(_ sender: UIButton) {
-        self.performSegue(withIdentifier: "openOtherPOCView", sender: self)
-    }
-    
     
 }
 
