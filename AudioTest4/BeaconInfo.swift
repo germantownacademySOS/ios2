@@ -6,6 +6,7 @@ struct ItemConstant {
     static let uuidKey = "uuid"
     static let majorKey = "major"
     static let minorKey = "minor"
+    
 }
 
 class BeaconInfo {

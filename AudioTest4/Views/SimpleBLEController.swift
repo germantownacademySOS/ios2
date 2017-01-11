@@ -12,6 +12,8 @@ import UIKit
 class SimpleBLEController: UIViewController {
 
     let locationManager = CLLocationManager()
+    
+    let soundPlayer = SOSSoundEngine()
 
     @IBOutlet weak var bleInfoLabelOut: UILabel!
     
@@ -24,9 +26,6 @@ class SimpleBLEController: UIViewController {
         // Do any additional setup after loading the view.
         locationManager.requestWhenInUseAuthorization()
         locationManager.delegate = self
-        
-        // @todo I AM HERE - why is this Failed monitoring region Optional("test beacon"): The operation couldn’t be completed. (kCLErrorDomain error 5.)
-        
         
         // just for testing - hard coded start of monitoring a beacon
         startMonitoringItem(item: BeaconInfo(name: "test beacon",
@@ -88,15 +87,29 @@ extension SimpleBLEController : CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], in region: CLBeaconRegion) {
         // print(">>> didRangeBeacons in \(region.proximityUUID)")
-        if( beacons.isEmpty ){ BleLog( "No Beacons nearby" ) }
-        
-        for beacon in beacons {
-            
-            BleLog("FOUND BEACON: \(beacon.proximityUUID) \(nameForProximity(proximity: beacon.proximity)) rssi:\(beacon.rssi))")
-            
-            // see what's up with the beacons in range...
-            // @todo I AM HERE - https://www.raywenderlich.com/101891/ibeacons-tutorial-ios-swift
+        if( beacons.isEmpty ){
+            BleLog( "No Beacons nearby" )
+            soundPlayer.playSound(named: "m21-Test1", atVolume: 0)
         }
+        else {
+            for beacon in beacons {
+                
+                BleLog("FOUND BEACON: \(beacon.proximityUUID) \(nameForProximity(proximity: beacon.proximity)) rssi:\(beacon.rssi))")
+                
+                //soundPlayer.playSound(named: "m21-Test1", atVolume: volumeForProximity(proximity: beacon.proximity))
+                
+                if(beacon.proximity == CLProximity.unknown) {
+                    soundPlayer.playSound(named: "m21-Test1", atVolume: 0)
+                }
+                else if(beacon.proximity == CLProximity.immediate) {
+                    soundPlayer.playSound(named: "m21-Test1", atVolume: 1.0)
+                }
+                else {
+                    soundPlayer.playSound(named: "m21-Test1", atVolume: (1 - (Float(-beacon.rssi)/100)))
+                }
+            }
+        }
+        
     }
     
     private func BleLog(_ msg: String) {
@@ -121,6 +134,19 @@ func nameForProximity(proximity: CLProximity) -> String {
         return "Near"
     case .far:
         return "Far"
+    }
+}
+
+func volumeForProximity(proximity: CLProximity) -> Float {
+    switch proximity {
+    case .unknown:
+        return 0
+    case .immediate:
+        return 1
+    case .near:
+        return 0.6
+    case .far:
+        return 0.1
     }
 }
 
