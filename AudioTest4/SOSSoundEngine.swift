@@ -16,17 +16,18 @@ class SOSSoundEngine {
     var mapPlayers = [String: AVAudioPlayer]()
     var mapSounds = [String: NSDataAsset]()
     
-    func playSound(named nameOfAudioFileInAssetCatalog: String, atVolume volume: Float) {
+    func playSound(named nameOfAudioFileInAssetCatalog: String, atVolume volume: Float) throws {
         
         // first check to see if we have already loaded this sound
         if mapSounds[nameOfAudioFileInAssetCatalog] == nil {
-            if let sound = NSDataAsset(name: nameOfAudioFileInAssetCatalog) {
-                mapSounds[nameOfAudioFileInAssetCatalog] = sound
+            guard let sound = NSDataAsset(name: nameOfAudioFileInAssetCatalog) else {
+                throw SOSError.fileAssetNotFound(called: nameOfAudioFileInAssetCatalog)
             }
-            else {
-                return // @todo maybe throw exception here?
-            }
+            
+            mapSounds[nameOfAudioFileInAssetCatalog] = sound
         }
+        
+        
         
         do {
             try! AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)

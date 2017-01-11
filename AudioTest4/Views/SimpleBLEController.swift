@@ -10,16 +10,16 @@ import CoreLocation
 import UIKit
 
 class SimpleBLEController: UIViewController {
-
+    
     let locationManager = CLLocationManager()
     
     let soundPlayer = SOSSoundEngine()
-
+    
     @IBOutlet weak var bleInfoLabelOut: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         bleInfoLabelOut.numberOfLines = 4
         bleInfoLabelOut.lineBreakMode = NSLineBreakMode.byWordWrapping
         
@@ -34,23 +34,23 @@ class SimpleBLEController: UIViewController {
             majorValue: 1234,
             minorValue: 5678))
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
 
 extension SimpleBLEController : CLLocationManagerDelegate {
@@ -87,27 +87,34 @@ extension SimpleBLEController : CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], in region: CLBeaconRegion) {
         // print(">>> didRangeBeacons in \(region.proximityUUID)")
-        if( beacons.isEmpty ){
-            BleLog( "No Beacons nearby" )
-            soundPlayer.playSound(named: "m21-Test1", atVolume: 0)
-        }
-        else {
-            for beacon in beacons {
-                
-                BleLog("FOUND BEACON: \(beacon.proximityUUID) \(nameForProximity(proximity: beacon.proximity)) rssi:\(beacon.rssi))")
-                
-                //soundPlayer.playSound(named: "m21-Test1", atVolume: volumeForProximity(proximity: beacon.proximity))
-                
-                if(beacon.proximity == CLProximity.unknown) {
-                    soundPlayer.playSound(named: "m21-Test1", atVolume: 0)
-                }
-                else if(beacon.proximity == CLProximity.immediate) {
-                    soundPlayer.playSound(named: "m21-Test1", atVolume: 1.0)
-                }
-                else {
-                    soundPlayer.playSound(named: "m21-Test1", atVolume: (1 - (Float(-beacon.rssi)/100)))
+        
+        do {
+            if (beacons.isEmpty) {
+                BleLog("No Beacons nearby")
+                try soundPlayer.playSound(named: "m21-Test1", atVolume: 0)
+            }
+            else {
+                for beacon in beacons {
+                    
+                    BleLog("FOUND BEACON: \(beacon.proximityUUID) \(nameForProximity(proximity: beacon.proximity)) rssi:\(beacon.rssi))")
+                    
+                    //soundPlayer.playSound(named: "m21-Test1", atVolume: volumeForProximity(proximity: beacon.proximity))
+                    
+                    if(beacon.proximity == CLProximity.unknown) {
+                        try soundPlayer.playSound(named: "m21-Test1", atVolume: 0)
+                    }
+                    else if(beacon.proximity == CLProximity.immediate) {
+                        try soundPlayer.playSound(named: "m21-Test1", atVolume: 1.0)
+                    }
+                    else {
+                        try soundPlayer.playSound(named: "m21-Test1", atVolume: (1 - (Float(-beacon.rssi)/100)))
+                    }
                 }
             }
+        } catch SOSError.fileAssetNotFound(let fileName){
+            print("Could not find file " + fileName)
+        } catch {
+            print("Unknown error")
         }
         
     }
