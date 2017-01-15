@@ -16,6 +16,13 @@ class SOSSoundEngine {
     var mapPlayers = [String: AVAudioPlayer]()
     var mapSounds = [String: NSDataAsset]()
     
+    func silenceAllSounds() {
+        for avPlayer in mapPlayers {
+            avPlayer.value.setVolume( 0, fadeDuration: 1)
+            avPlayer.value.stop()
+        }
+    }
+    
     func playSound(named nameOfAudioFileInAssetCatalog: String, atVolume volume: Float) throws {
         
         // first check to see if we have already loaded this sound

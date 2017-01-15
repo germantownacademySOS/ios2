@@ -6,6 +6,7 @@ struct ItemConstant {
     static let uuidKey = "uuid"
     static let majorKey = "major"
     static let minorKey = "minor"
+    static let sound = "sound";
     
 }
 
@@ -14,12 +15,14 @@ class BeaconInfo {
     let uuid: UUID
     let majorValue: CLBeaconMajorValue
     let minorValue: CLBeaconMinorValue
+    let sound: String
     
-    init(name: String, uuid: UUID, majorValue: CLBeaconMajorValue, minorValue: CLBeaconMinorValue) {
+    init(name: String, uuid: UUID, majorValue: CLBeaconMajorValue, minorValue: CLBeaconMinorValue, sound: String) {
         self.name = name
         self.uuid = uuid
         self.majorValue = majorValue
         self.minorValue = minorValue
+        self.sound = sound
     }
     
 }
