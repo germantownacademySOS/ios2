@@ -33,16 +33,37 @@ The sketch demonstrates iBecaon from an RFduino
 // pin 3 on the RGB shield is the green led
 int led = 3;
 
+
+//char *uuid = "3bdb098f-b8b0-4d1b-baa2-0d93eb7169c4";
+//char *uuid = "E2C56DB5-DFFB-48D2-B060-D0F5A71096E0";
+
 void setup() {
   // led used to indicate that iBeacon has started
   pinMode(led, OUTPUT);
+
+//  Serial.begin(9600);
+//  while (!Serial) {
+//    ; // wait for serial port to connect. Needed for native USB port only
+//  }
+//
+//  // send an intro:
+//  Serial.println("Getting ready to beacon!");
+//  Serial.println();
 
   // do iBeacon advertising
   RFduinoBLE.iBeacon = true;
   
   // override the default iBeacon settings
-  uint8_t uuid[16] = {0xE2, 0xC5, 0x6D, 0xB5, 0xDF, 0xFB, 0x48, 0xD2, 0xB0, 0x60, 0xD0, 0xF5, 0xA7, 0x10, 0x96, 0xE0};
-  memcpy(RFduinoBLE.iBeaconUUID, uuid, sizeof(RFduinoBLE.iBeaconUUID));
+  //uint8_t uuid[16] = {0xE2, 0xC5, 0x6D, 0xB5, 0xDF, 0xFB, 0x48, 0xD2, 0xB0, 0x60, 0xD0, 0xF5, 0xA7, 0x10, 0x96, 0xE0};
+  //memcpy(RFduinoBLE.iBeaconUUID, uuid, sizeof(RFduinoBLE.iBeaconUUID));
+
+  // new way of writing the UUID - this lets us use a String to represent the UUID in code
+  // disadvantage is we have to convert it to an array of ints before using, which means we have
+  // to account for the dashes and converting from hex 
+  uint8_t uuidAsInts[16];  
+  convertUUIDStringToArrayOfInts("E2C56DB5-DFFB-48D2-B060-D0F5A71096E0", uuidAsInts);
+  memcpy(RFduinoBLE.iBeaconUUID, uuidAsInts, sizeof(RFduinoBLE.iBeaconUUID));  
+  
   RFduinoBLE.iBeaconMajor = 1234;
   RFduinoBLE.iBeaconMinor = 5678;
   RFduinoBLE.iBeaconMeasuredPower = 0xC6;
@@ -65,4 +86,39 @@ void RFduinoBLE_onAdvertisement(bool start)
     digitalWrite(led, HIGH);
   else
     digitalWrite(led, LOW);
+}
+
+/**
+ * This will walk through the passed in uuid string, and write out the 
+ * HEX encoded pairs to the passed in array. This assumes that the string 
+ * and the passed in array are the right sizes. For example if you pass in 
+ * a UUID that has 32 characters (not including the dashes!), the array should
+ * have 16 elements in it because we will be taking two letters at a time and 
+ * converting the hex to an int.
+ */
+void convertUUIDStringToArrayOfInts(char *uuid, uint8_t *uuidAsInts) {
+
+  // This algo will work for any size of uuid regardless where the hyphens are placed
+  // However, you have to make sure that the destination have enough space.
+  
+  int strCounter=0;      // need two counters: one for uuid string and
+  int hexCounter=0;      // another one for destination adv_data
+  
+  while (strCounter<strlen(uuid))
+  {
+       if (uuid[strCounter] == '-') 
+       {
+           strCounter++;     //go to the next element
+           continue;
+       }
+  
+       // convert the next two hex characters to a string
+       char str[3] = "\0";
+       str[0] = uuid[strCounter++];
+       str[1] = uuid[strCounter++];
+  
+       // convert hex string to int 
+       uuidAsInts[hexCounter++]= (uint8_t)strtol(str, NULL, 16);
+  }
+
 }
