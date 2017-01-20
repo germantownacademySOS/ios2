@@ -1,15 +1,6 @@
 import Foundation
 import CoreLocation
 
-struct ItemConstant {
-    static let nameKey = "name"
-    static let uuidKey = "uuid"
-    static let majorKey = "major"
-    static let minorKey = "minor"
-    static let sound = "sound";
-    
-}
-
 class BeaconInfo {
     let name: String
     let uuid: UUID
@@ -17,12 +8,15 @@ class BeaconInfo {
     let minorValue: CLBeaconMinorValue
     let sound: String
     
-    init(name: String, uuid: UUID, majorValue: CLBeaconMajorValue, minorValue: CLBeaconMinorValue, sound: String) {
+    let pan: Float /* panning. -1.0 is left, 0.0 is center, 1.0 is right. */
+    
+    init(name: String, uuid: UUID, majorValue: CLBeaconMajorValue, minorValue: CLBeaconMinorValue, sound: String, panning: Float) {
         self.name = name
         self.uuid = uuid
         self.majorValue = majorValue
         self.minorValue = minorValue
         self.sound = sound
+        self.pan = panning
     }
     
 }

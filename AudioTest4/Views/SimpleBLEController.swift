@@ -22,7 +22,7 @@ class SimpleBLEController: UIViewController {
     
     let soundPlayer = SOSSoundEngine()
     
-    var mapSounds = [String: BeaconInfo]()
+    var mapBeaconInfo = [String: BeaconInfo]()
     
     @IBOutlet weak var bleInfoLabelOut: UILabel!
     
@@ -41,13 +41,15 @@ class SimpleBLEController: UIViewController {
             uuid: UUID( uuidString: uuid1)!,
             majorValue: 1234,
             minorValue: 5678,
-            sound: "m21-Test1"))
+            sound: "m21-Test1",
+            panning: -0.5))
 
         startMonitoringItem(item: BeaconInfo(name: "test beacon2",
             uuid: UUID( uuidString: uuid2)!,
             majorValue: 1234,
             minorValue: 5678,
-            sound: "m21-Test2"))
+            sound: "m21-Test2",
+            panning: 0.5 ))
 }
     
     override func didReceiveMemoryWarning() {
@@ -82,7 +84,7 @@ extension SimpleBLEController : CLLocationManagerDelegate {
         let beaconRegion = beaconRegionWithItem(item: item)
         locationManager.startMonitoring(for: beaconRegion)
         locationManager.startRangingBeacons(in: beaconRegion)
-        mapSounds[item.uuid.uuidString] = item
+        mapBeaconInfo[item.uuid.uuidString] = item
         BleLog( "Started Monitoring!!!" )
     }
     
@@ -90,7 +92,7 @@ extension SimpleBLEController : CLLocationManagerDelegate {
         let beaconRegion = beaconRegionWithItem(item: item)
         locationManager.stopMonitoring(for: beaconRegion)
         locationManager.stopRangingBeacons(in: beaconRegion)
-        mapSounds.removeValue(forKey: item.uuid.uuidString)
+        mapBeaconInfo.removeValue(forKey: item.uuid.uuidString)
         BleLog( "STOPPED Monitoring!" )
     }
     
@@ -109,23 +111,25 @@ extension SimpleBLEController : CLLocationManagerDelegate {
             if (beacons.isEmpty) {
                 // BleLog("No Beacons nearby")
                 // soundPlayer.silenceAllSounds()
-                try soundPlayer.playSound(named: (mapSounds[region.proximityUUID.uuidString]?.sound)!, atVolume: 0)
+                try soundPlayer.playSound(named: (mapBeaconInfo[region.proximityUUID.uuidString]?.sound)!, atVolume: 0 )
             }
             else {
-                for beacon in beacons {
+                for rangedBeacon in beacons {
                     
-                    BleLog("FOUND BEACON: \(beacon.proximityUUID) \(nameForProximity(proximity: beacon.proximity)) rssi:\(beacon.rssi))")
+                    BleLog("FOUND BEACON: \(rangedBeacon.proximityUUID) \(nameForProximity(proximity: rangedBeacon.proximity)) rssi:\(rangedBeacon.rssi))")
                     
                     //soundPlayer.playSound(named: "m21-Test1", atVolume: volumeForProximity(proximity: beacon.proximity))
                     
-                    if(beacon.proximity == CLProximity.unknown) {
-                        try soundPlayer.playSound(named: (mapSounds[beacon.proximityUUID.uuidString]?.sound)!, atVolume: 0)
+                    let beaconInfo = mapBeaconInfo[rangedBeacon.proximityUUID.uuidString]
+                    
+                    if(rangedBeacon.proximity == CLProximity.unknown) {
+                        try soundPlayer.playSound(named: (beaconInfo?.sound)!, atVolume: 0, panned: (beaconInfo?.pan)!)
                     }
-                    else if(beacon.proximity == CLProximity.immediate) {
-                        try soundPlayer.playSound(named: (mapSounds[beacon.proximityUUID.uuidString]?.sound)!, atVolume: 1.0)
+                    else if(rangedBeacon.proximity == CLProximity.immediate) {
+                        try soundPlayer.playSound(named: (beaconInfo?.sound)!, atVolume: 1.0, panned: (beaconInfo?.pan)!)
                     }
                     else {
-                        try soundPlayer.playSound(named: (mapSounds[beacon.proximityUUID.uuidString]?.sound)!, atVolume: (1 - (Float(-beacon.rssi)/100)))
+                        try soundPlayer.playSound(named: (beaconInfo?.sound)!, atVolume: (1 - (Float(-rangedBeacon.rssi)/100)), panned: (beaconInfo?.pan)! )
                     }
                 }
             }

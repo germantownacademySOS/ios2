@@ -19,11 +19,11 @@ class SOSSoundEngine {
     func silenceAllSounds() {
         for avPlayer in mapPlayers {
             avPlayer.value.setVolume( 0, fadeDuration: 1)
-            avPlayer.value.stop()
+            avPlayer.value.pause()
         }
     }
     
-    func playSound(named nameOfAudioFileInAssetCatalog: String, atVolume volume: Float) throws {
+    func playSound(named nameOfAudioFileInAssetCatalog: String, atVolume volume: Float, panned: Float = 0) throws {
         
         // first check to see if we have already loaded this sound
         if mapSounds[nameOfAudioFileInAssetCatalog] == nil {
@@ -34,8 +34,6 @@ class SOSSoundEngine {
             mapSounds[nameOfAudioFileInAssetCatalog] = sound
         }
         
-        
-        
         do {
             try! AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
             try! AVAudioSession.sharedInstance().setActive(true)
@@ -44,11 +42,12 @@ class SOSSoundEngine {
             
             if let oldPlayer = mapPlayers[nameOfAudioFileInAssetCatalog] {
                 
-                // if volume is zero make sure we stop the sound
+                // if volume is zero make sure we pause the sound
                 if volume == 0
-                    { oldPlayer.stop() }
+                    { oldPlayer.pause() }
                 else {
                     oldPlayer.setVolume( volume, fadeDuration: 1)
+                    oldPlayer.pan = panned
                     if( !oldPlayer.isPlaying ) { oldPlayer.play() }
                 }
 
@@ -57,8 +56,10 @@ class SOSSoundEngine {
                 let newPlayer = try AVAudioPlayer(data: (mapSounds[nameOfAudioFileInAssetCatalog]?.data)!)
                 mapPlayers[nameOfAudioFileInAssetCatalog] = newPlayer
                 newPlayer.volume = 0
-                newPlayer.play()
+                newPlayer.numberOfLoops = 0 // will loop forever
+                newPlayer.pan = panned
                 newPlayer.setVolume( volume, fadeDuration: 1)
+                newPlayer.play()
             }
             
         } catch {
