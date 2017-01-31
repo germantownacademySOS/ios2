@@ -21,8 +21,8 @@ class AlamofireViewController: UIViewController {
         labelOutput.lineBreakMode = .byWordWrapping
         labelOutput.numberOfLines = 0
         
-        Alamofire.request("http://httpbin.org/get").responseString { respose in
-            self.labelOutput.text = respose.result.value
+        Alamofire.request("http://httpbin.org/get").responseString { response in
+            self.labelOutput.text = response.result.value
         }
         
     }
