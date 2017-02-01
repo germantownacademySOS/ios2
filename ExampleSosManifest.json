@@ -1,0 +1,24 @@
+{
+  "soundsOfSelf": [
+    {
+      "beaconAlias": "test beacon1",
+      "beaconUuid": "57ee374b-4369-47de-bf34-ed42cb45dbe8",
+      "major": 1234,
+      "minor": 5678,
+      "soundName": "m21-Test2",
+      "soundUrl": null,
+      "panning": -0.5,
+      "gain": 0
+    },
+    {
+      "beaconAlias": "test beacon2",
+      "beaconUuid": "d3830e87-9b71-4797-af49-f16e754dc44b",
+      "major": 1234,
+      "minor": 5678,
+      "soundName": "m21-Test1",
+      "soundUrl": null,
+      "panning": 0.5,
+      "gain": 0
+    }
+  ]
+}
