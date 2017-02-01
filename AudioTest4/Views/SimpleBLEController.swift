@@ -58,26 +58,48 @@ class SimpleBLEController: UIViewController {
 //            panning: 0.5 ))
         
         // let's try and load the JSON from the intarnets!!!
-        Alamofire.request("https://s3.amazonaws.com/sfraser/ExampleSosManifest.json").responseString { response in
+        //let configuration = URLSessionConfiguration.ephemeral
+        //configuration.urlCache?.removeAllCachedResponses()
+        //let sessionManager = Alamofire.SessionManager(configuration: configuration)
+        
+        URLCache.shared.removeAllCachedResponses()
+        Alamofire.request("http://s3.amazonaws.com/sfraser/ExampleSosManifest.json")
+            .validate(statusCode: 200..<300)
+            .validate(contentType: ["application/json"])
+            .responseString { response in
 
-            // convert string to JSON - based on examples from https://github.com/SwiftyJSON/SwiftyJSON
-            if let dataFromString = response.result.value?.data(using: .utf8, allowLossyConversion: false) {
-                
-                let json = JSON(data: dataFromString)
-                
-                // loop through all the beacons defined in the JSON and start monitoring for them
-                
-                for (_,beaconJson):(String, JSON) in json["soundsOfSelf"] {
-                    
-                    self.startMonitoringItem(item: BeaconInfo(name: beaconJson["beaconAlias"].stringValue,
-                                                         uuid: UUID( uuidString: beaconJson["beaconUuid"].stringValue)!,
-                                                         majorValue: CLBeaconMajorValue(beaconJson["major"].intValue),
-                                                         minorValue: CLBeaconMinorValue(beaconJson["minor"].intValue),
-                                                         sound: beaconJson["soundName"].stringValue,
-                                                         panning: beaconJson["pan"].floatValue))
-                    
+                switch response.result {
+                case .success:
+                    // convert string to JSON - based on examples from https://github.com/SwiftyJSON/SwiftyJSON
+                    if let dataFromString = response.result.value?.data(using: .utf8, allowLossyConversion: false) {
+                        
+                        let json = JSON(data: dataFromString)
+                        
+                        // loop through all the beacons defined in the JSON and start monitoring for them
+                        if json["soundsOfSelf"].exists() {
+                        
+                            for (_,beaconJson):(String, JSON) in json["soundsOfSelf"] {
+                                
+                                self.startMonitoringItem(item: BeaconInfo(name: beaconJson["beaconAlias"].stringValue,
+                                                                          uuid: UUID( uuidString: beaconJson["beaconUuid"].stringValue)!,
+                                                                          majorValue: CLBeaconMajorValue(beaconJson["major"].intValue),
+                                                                          minorValue: CLBeaconMinorValue(beaconJson["minor"].intValue),
+                                                                          sound: beaconJson["soundName"].stringValue,
+                                                                          panning: beaconJson["pan"].floatValue))
+                                
+                            }
+                        }
+                        else {
+                            self.BleLog( "Failed to parse JSON: \(response.result.value)" )
+                        }
+                    }
+                    else {
+                        self.BleLog( "Failed to read JSON: \(response.result.value)" )
+                    }
+                case .failure(let error):
+                    self.BleLog("Failed to load SOS Manifest: \(error)")
                 }
-            }
+                
         }
         
 }
