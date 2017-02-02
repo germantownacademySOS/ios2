@@ -85,7 +85,10 @@ class SimpleBLEController: UIViewController {
                                                                           majorValue: CLBeaconMajorValue(beaconJson["major"].intValue),
                                                                           minorValue: CLBeaconMinorValue(beaconJson["minor"].intValue),
                                                                           sound: beaconJson["soundName"].stringValue,
-                                                                          panning: beaconJson["pan"].floatValue))
+                                                                          panning: beaconJson["pan"].floatValue,
+                                                                          backgroundSound: beaconJson["backgroundSound"].stringValue,
+                                                                          backgroundVolume: beaconJson["backgroundVolume"].floatValue
+                                                                          ))
                                 
                             }
                         }
@@ -167,26 +170,45 @@ extension SimpleBLEController : CLLocationManagerDelegate {
             if (beacons.isEmpty) {
                 // BleLog("No Beacons nearby")
                 // soundPlayer.silenceAllSounds()
-                try soundPlayer.playSound(named: (mapBeaconInfo[region.proximityUUID.uuidString]?.sound)!, atVolume: 0 )
+                if let beaconInfo = mapBeaconInfo[region.proximityUUID.uuidString] {
+                
+                    try soundPlayer.playSound(named: beaconInfo.sound, atVolume: 0 )
+                    
+                    // turn off the background sound if there was one for this beacon
+                    if( beaconInfo.backgroundSound.isEmpty) {
+                        try soundPlayer.playSound(named: beaconInfo.backgroundSound, atVolume: 0 )
+                    }
+                }
             }
             else {
                 for rangedBeacon in beacons {
                     
                     BleLog("FOUND BEACON: \(rangedBeacon.proximityUUID) \(nameForProximity(proximity: rangedBeacon.proximity)) rssi:\(rangedBeacon.rssi))")
                     
-                    //soundPlayer.playSound(named: "m21-Test1", atVolume: volumeForProximity(proximity: beacon.proximity))
+                    if let beaconInfo = mapBeaconInfo[rangedBeacon.proximityUUID.uuidString] {
+                        
+                        // no matter what if there was a background sound play it
+                        if !(beaconInfo.backgroundSound.isEmpty) {
+                            try soundPlayer.playSound(named: (beaconInfo.backgroundSound), atVolume: (beaconInfo.backgroundVolume))
+                        }
+                        
+                        if(rangedBeacon.proximity == CLProximity.unknown) {
+                            try soundPlayer.playSound(named: (beaconInfo.sound), atVolume: 0, panned: (beaconInfo.pan))
+                            
+                            // if there was a background sound turn it off
+                            if( beaconInfo.backgroundSound.isEmpty) {
+                                try soundPlayer.playSound(named: beaconInfo.backgroundSound, atVolume: 0 )
+                            }
+                        }
+                        else if(rangedBeacon.proximity == CLProximity.immediate) {
+                            try soundPlayer.playSound(named: (beaconInfo.sound), atVolume: 1.0, panned: (beaconInfo.pan))
+                        }
+                        else {
+                            try soundPlayer.playSound(named: (beaconInfo.sound), atVolume: (1 - (Float(-rangedBeacon.rssi)/100)), panned: (beaconInfo.pan) )
+                        }
+                        
+                    }
                     
-                    let beaconInfo = mapBeaconInfo[rangedBeacon.proximityUUID.uuidString]
-                    
-                    if(rangedBeacon.proximity == CLProximity.unknown) {
-                        try soundPlayer.playSound(named: (beaconInfo?.sound)!, atVolume: 0, panned: (beaconInfo?.pan)!)
-                    }
-                    else if(rangedBeacon.proximity == CLProximity.immediate) {
-                        try soundPlayer.playSound(named: (beaconInfo?.sound)!, atVolume: 1.0, panned: (beaconInfo?.pan)!)
-                    }
-                    else {
-                        try soundPlayer.playSound(named: (beaconInfo?.sound)!, atVolume: (1 - (Float(-rangedBeacon.rssi)/100)), panned: (beaconInfo?.pan)! )
-                    }
                 }
             }
         } catch SOSError.fileAssetNotFound(let fileName){
