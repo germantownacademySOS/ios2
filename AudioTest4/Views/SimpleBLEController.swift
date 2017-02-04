@@ -35,7 +35,7 @@ class SimpleBLEController: UIViewController {
         super.viewDidLoad()
         
         
-        bleInfoLabelOut.numberOfLines = 4
+        bleInfoLabelOut.numberOfLines = 8
         bleInfoLabelOut.lineBreakMode = NSLineBreakMode.byWordWrapping
         
         // Do any additional setup after loading the view.
@@ -62,8 +62,15 @@ class SimpleBLEController: UIViewController {
         //configuration.urlCache?.removeAllCachedResponses()
         //let sessionManager = Alamofire.SessionManager(configuration: configuration)
         
+        // using an ephemeral session manager, which means things should not get cached 
+        // after you shut the app down. So every time you re-run the app I think this means
+        // the JSON will get redownloaded: https://developer.apple.com/reference/foundation/urlsessionconfiguration/1855950-ephemeral
+        // let sessionManager = Alamofire.SessionManager(configuration: URLSessionConfiguration.ephemeral)
+        
         URLCache.shared.removeAllCachedResponses()
         Alamofire.request("http://s3.amazonaws.com/sfraser/ExampleSosManifest.json")
+        // URLCache.shared.removeAllCachedResponses()
+        // sessionManager.request("http://s3.amazonaws.com/sfraser/ExampleSosManifest.json")
             .validate(statusCode: 200..<300)
             .validate(contentType: ["application/json"])
             .responseString { response in
@@ -172,45 +179,78 @@ extension SimpleBLEController : CLLocationManagerDelegate {
                 // soundPlayer.silenceAllSounds()
                 if let beaconInfo = mapBeaconInfo[region.proximityUUID.uuidString] {
                 
-                    try soundPlayer.playSound(named: beaconInfo.sound, atVolume: 0 )
-                    
-                    // turn off the background sound if there was one for this beacon
-                    if( beaconInfo.backgroundSound.isEmpty) {
-                        try soundPlayer.playSound(named: beaconInfo.backgroundSound, atVolume: 0 )
+                    if( soundPlayer.isSoundPlaying(named: beaconInfo.sound ) ) {
+                        soundPlayer.silenceSound(named: beaconInfo.sound )
+                        beaconInfo.currentStatus = "Out of Range"
+                        beaconInfo.currentVolume = 0
+                        
+                        // turn off the background sound if there was one for this beacon
+                        if( !beaconInfo.backgroundSound.isEmpty) {
+                            soundPlayer.silenceSound(named: beaconInfo.backgroundSound )
+                        }
                     }
                 }
             }
             else {
+                
                 for rangedBeacon in beacons {
                     
-                    BleLog("FOUND BEACON: \(rangedBeacon.proximityUUID) \(nameForProximity(proximity: rangedBeacon.proximity)) rssi:\(rangedBeacon.rssi))")
+                    //BleLog("FOUND BEACON: \(rangedBeacon.proximityUUID) \(nameForProximity(proximity: rangedBeacon.proximity)) rssi:\(rangedBeacon.rssi))")
                     
                     if let beaconInfo = mapBeaconInfo[rangedBeacon.proximityUUID.uuidString] {
                         
-                        // no matter what if there was a background sound play it
-                        if !(beaconInfo.backgroundSound.isEmpty) {
-                            try soundPlayer.playSound(named: (beaconInfo.backgroundSound), atVolume: (beaconInfo.backgroundVolume))
-                        }
+                        beaconInfo.currentStatus = "[\(beaconInfo.name)],\(nameForProximity(proximity: rangedBeacon.proximity)) rssi:\(rangedBeacon.rssi)\n";
                         
                         if(rangedBeacon.proximity == CLProximity.unknown) {
-                            try soundPlayer.playSound(named: (beaconInfo.sound), atVolume: 0, panned: (beaconInfo.pan))
+                            soundPlayer.silenceSound(named: (beaconInfo.sound))
+                            beaconInfo.currentVolume = 0
                             
                             // if there was a background sound turn it off
                             if( beaconInfo.backgroundSound.isEmpty) {
-                                try soundPlayer.playSound(named: beaconInfo.backgroundSound, atVolume: 0 )
+                                soundPlayer.silenceSound(named: beaconInfo.backgroundSound )
                             }
                         }
                         else if(rangedBeacon.proximity == CLProximity.immediate) {
-                            try soundPlayer.playSound(named: (beaconInfo.sound), atVolume: 1.0, panned: (beaconInfo.pan))
+                            
+                            // no matter what if there was a background sound play it
+                            if !(beaconInfo.backgroundSound.isEmpty) {
+                                //BleLog("Playing background sound: \(beaconInfo.backgroundSound) at \(beaconInfo.backgroundVolume)")
+                                try soundPlayer.playSound(named: (beaconInfo.backgroundSound), atVolume: (beaconInfo.backgroundVolume))
+                            }
+
+                            beaconInfo.currentVolume = 1.0
+                            try soundPlayer.playSound(named: (beaconInfo.sound), atVolume: beaconInfo.currentVolume, panned: (beaconInfo.pan))
+                            
+                            
                         }
                         else {
-                            try soundPlayer.playSound(named: (beaconInfo.sound), atVolume: (1 - (Float(-rangedBeacon.rssi)/100)), panned: (beaconInfo.pan) )
+                            
+                            // no matter what if there was a background sound play it
+                            if !(beaconInfo.backgroundSound.isEmpty) {
+                                //BleLog("Playing background sound: \(beaconInfo.backgroundSound) at \(beaconInfo.backgroundVolume)")
+                                try soundPlayer.playSound(named: (beaconInfo.backgroundSound), atVolume: (beaconInfo.backgroundVolume))
+                            }
+                            
+                            beaconInfo.currentVolume = (1 - (Float(-rangedBeacon.rssi)/100))
+                            try soundPlayer.playSound(named: (beaconInfo.sound), atVolume: (beaconInfo.currentVolume), panned: (beaconInfo.pan) )
+                            
                         }
                         
                     }
                     
                 }
+
             }
+            
+            // log status on all the beacons we know about
+            var statusReport = ""
+            
+            for beaconInfo in mapBeaconInfo {
+                statusReport += beaconInfo.value.getCurrentStatus() + " vol:\(beaconInfo.value.currentVolume)\n"
+            }
+            
+            BleLog(statusReport)
+            
         } catch SOSError.fileAssetNotFound(let fileName){
             print("Could not find file " + fileName)
         } catch {

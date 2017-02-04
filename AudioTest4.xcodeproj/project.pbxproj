@@ -14,7 +14,6 @@
 		9B4EBDA81DB81A90006D4089 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B4EBDA71DB81A90006D4089 /* Assets.xcassets */; };
 		9B4EBDAB1DB81A90006D4089 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B4EBDA91DB81A90006D4089 /* LaunchScreen.storyboard */; };
 		9B4EBDB61DB81A90006D4089 /* AudioTest4Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4EBDB51DB81A90006D4089 /* AudioTest4Tests.swift */; };
-		9B4EBDC11DB845CA006D4089 /* StreamPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4EBDC01DB845CA006D4089 /* StreamPlayer.swift */; };
 		C219AC5D1E242EB100A24E42 /* AlamofireViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C219AC5C1E242EB100A24E42 /* AlamofireViewController.swift */; };
 		C2C72A1A1E26601100870385 /* SOSExceptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C72A191E26601100870385 /* SOSExceptions.swift */; };
 		C2EE8EA21E24538500D86D0D /* SimpleBLEController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EE8EA11E24538500D86D0D /* SimpleBLEController.swift */; };
@@ -48,7 +47,6 @@
 		9B4EBDB11DB81A90006D4089 /* AudioTest4Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AudioTest4Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B4EBDB51DB81A90006D4089 /* AudioTest4Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioTest4Tests.swift; sourceTree = "<group>"; };
 		9B4EBDB71DB81A90006D4089 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9B4EBDC01DB845CA006D4089 /* StreamPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StreamPlayer.swift; sourceTree = "<group>"; };
 		C219AC5C1E242EB100A24E42 /* AlamofireViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AlamofireViewController.swift; path = Views/AlamofireViewController.swift; sourceTree = "<group>"; };
 		C2C72A191E26601100870385 /* SOSExceptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SOSExceptions.swift; sourceTree = "<group>"; };
 		C2EE8EA11E24538500D86D0D /* SimpleBLEController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SimpleBLEController.swift; path = Views/SimpleBLEController.swift; sourceTree = "<group>"; };
@@ -127,7 +125,6 @@
 				9B4EBDA71DB81A90006D4089 /* Assets.xcassets */,
 				9B4EBDA91DB81A90006D4089 /* LaunchScreen.storyboard */,
 				9B4EBDAC1DB81A90006D4089 /* Info.plist */,
-				9B4EBDC01DB845CA006D4089 /* StreamPlayer.swift */,
 				D229B4701E08CDF0000CBA99 /* BeaconInfo.swift */,
 				D28F122A1E25DBC7000FF57D /* SOSSoundEngine.swift */,
 				C2C72A191E26601100870385 /* SOSExceptions.swift */,
@@ -359,7 +356,6 @@
 			files = (
 				D28F122B1E25DBC7000FF57D /* SOSSoundEngine.swift in Sources */,
 				C219AC5D1E242EB100A24E42 /* AlamofireViewController.swift in Sources */,
-				9B4EBDC11DB845CA006D4089 /* StreamPlayer.swift in Sources */,
 				C2EE8EA21E24538500D86D0D /* SimpleBLEController.swift in Sources */,
 				D2E6484C1E2478F20004E17B /* ViewController.swift in Sources */,
 				C2C72A1A1E26601100870385 /* SOSExceptions.swift in Sources */,

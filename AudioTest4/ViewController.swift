@@ -11,7 +11,7 @@ import CoreLocation
 
 class ViewController: UIViewController {
     
-    let streamer = StreamPlayer()
+    let streamer = SOSSoundEngine()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,9 +26,15 @@ class ViewController: UIViewController {
     
     
     @IBAction func didTouchSound1Button(_ sender: UIButton) {
-        streamer.playSound( sender.currentTitle!)
+        do {
+            // this used to turn the sound on and off
+            try streamer.playSound( named: sender.currentTitle!, atVolume: 1 )
+        } catch SOSError.fileAssetNotFound(let fileName){
+            print("Could not find file " + fileName)
+        } catch {
+            print("Unknown error")
+        }
     }
-    
     
 }
 
